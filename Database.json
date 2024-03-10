@@ -1,0 +1,86 @@
+{
+    "dihari": [
+        {
+            "date": "2024-03-07",
+            "rate": "6988",
+            "due": 6922,
+            "paid": "66",
+            "builder": "Const express",
+            "location": "Const u",
+            "referCode": "qtwXcGOvtPExxUBj2WmA"
+        },
+        {
+            "date": "2024-03-04",
+            "rate": "660",
+            "due": 595,
+            "paid": "65",
+            "builder": "How are",
+            "location": "Mjj",
+            "referCode": "osoBny4jgkh452QqSqxZ"
+        },
+        {
+            "date": "2024-03-09",
+            "rate": "550",
+            "due": 0,
+            "paid": 0,
+            "builder": "Sunil Tkdr",
+            "location": "CR park"
+        },
+        {
+            "date": "2024-03-09",
+            "rate": "550",
+            "due": 550,
+            "paid": "0",
+            "builder": "Bhuwneshwar",
+            "location": "CR park"
+        },
+        {
+            "date": "2024-03-07",
+            "rate": "550",
+            "due": 0,
+            "paid": 0,
+            "builder": "Sunil Tkdr",
+            "location": "Ashram "
+        },
+        {
+            "date": "2024-03-08",
+            "rate": "550",
+            "due": 0,
+            "paid": 0,
+            "builder": "Sunil Tkdr",
+            "location": "Ashram "
+        },
+        {
+            "date": "",
+            "rate": 0,
+            "due": 0,
+            "paid": 0,
+            "builder": "",
+            "location": ""
+        },
+        {
+            "date": "2024-03-23",
+            "rate": "500",
+            "due": "500",
+            "paid": "0",
+            "builder": "Sunil Tkdr",
+            "location": "ashram"
+        },
+        {
+            "date": "2024-03-07",
+            "rate": "500",
+            "due": "0",
+            "paid": "500",
+            "builder": "gutu",
+            "location": "yggh"
+        },
+        {
+            "date": "2024-03-07",
+            "rate": "500",
+            "due": "500",
+            "paid": "500",
+            "builder": "gutu",
+            "location": "yggh"
+        }
+    ]
+}
