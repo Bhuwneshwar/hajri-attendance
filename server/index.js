@@ -56,8 +56,8 @@ app.post("/v1/add-hajri", (req, res) => {
     if (date === "") return res.send({ error: "Date is Empty! " });
     if (rate === "") return res.send({ error: "rate is Empty! " });
     if (paid === "") return res.send({ error: "paid is Empty! " });
-    if (builder === "") return res.send({ error: "builder is Empty! " });
-    if (location === "") return res.send({ error: "location is Empty! " });
+    if (builder === "") return res.send({ error: "builder is Empty!" });
+    if (location === "") return res.send({ error: "location is Empty!" });
 
     insertData("dihari", req.body);
     res.status(201).send({ message: "Data Inserted. " });

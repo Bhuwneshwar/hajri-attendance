@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "cd client && npm run build",
+        "build": "echo \" No build specified\"",
         "test": "echo \"No test specified\" && exit 1",
         "start": "node server/index.js",
         "backend": "nodemon server/index.js",
