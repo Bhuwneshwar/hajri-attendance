@@ -65,6 +65,7 @@ async function updateFile(key, referCode, obj) {
     try {
         const rawData = await fs.readFile(dbPath, "utf8");
         const db = JSON.parse(rawData);
+        console.log({ obj });
 
         const arr = db[key];
         if (arr) {
@@ -75,13 +76,14 @@ async function updateFile(key, referCode, obj) {
                 } else return ele;
             });
             db[key] = modifiedArr;
-        } else return "Invalid key!";
+        } else return false;
 
         await fs.writeFile(dbPath, JSON.stringify(db, null, 4));
         console.log("File updated successfully!");
         return true;
     } catch (err) {
         console.error("Error updating file:", err);
+        return false ;
     }
 }
 
@@ -94,11 +96,12 @@ const deleteByRefer = async (key, referCode) => {
         if (arr) {
             const DeletedArr = arr.filter(obj => obj.referCode !== referCode);
             db[key] = DeletedArr;
-        } else return "Invalid key!";
+        } else return false;
         await fs.writeFile(dbPath, JSON.stringify(db, null, 4));
         return true;
     } catch (error) {
         console.log(error);
+        return false;
     }
 };
 

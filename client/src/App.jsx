@@ -19,9 +19,16 @@ const App = () => {
 
     const [Trate, setTrate] = useState(0);
     const [Tpaid, setTpaid] = useState(0);
+    const [btn, setBtn] = useState("Insert");
+    const [referCode, setReferCode] = useState("");
 
-    const handleSubmit = async e => {
+    const handleSubmit = e => {
         e.preventDefault();
+    };
+    // if (btn === "Insert") insert();
+    //         if (btn === "Update") update();
+    //         if (btn === "Delete") deleteTr();
+    const insert = async () => {
         try {
             const { data } = await axios.post("/v1/add-hajri", {
                 date,
@@ -32,8 +39,41 @@ const App = () => {
                 location
             });
             console.log({ data });
+            getData();
+            alert(data.message);
         } catch (err) {
-            alert(err);
+            console.log(err);
+        }
+    };
+    const update = async () => {
+        try {
+            const { data } = await axios.put("/v1/hajri", {
+                referCode,
+                data: { date, rate, due, paid, builder, location }
+            });
+            console.log({ data });
+            getData();
+
+            alert(data.message);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    const deleteTr = async () => {
+        try {
+            const yes = confirm(
+                "Do you want to Really Delete this day record! "
+            );
+            if (!yes) return;
+            console.log({ referCode });
+            const { data } = await axios.put("/v1/hajri-del", {
+                referCode
+            });
+            console.log({ data });
+            getData();
+            alert(data.message);
+        } catch (err) {
+            console.log(err);
         }
     };
 
@@ -49,12 +89,10 @@ const App = () => {
                     ? unique
                     : [...unique, obj];
             }, []);
-            console.log({ uniqueBuilder });
             const obj = {};
             uniqueBuilder.map(element => {
                 obj[element.builder] = false;
             });
-            console.log({ obj });
             setBuilderCheckBox(obj);
             setBuilderLocation(prev => {
                 return {
@@ -67,7 +105,6 @@ const App = () => {
                     ? unique
                     : [...unique, obj];
             }, []);
-            console.log({ uniqueLocation });
             setLocationCheckBox(obj);
             setBuilderLocation(prev => {
                 return {
@@ -118,13 +155,19 @@ const App = () => {
         const value = e.target.value;
         setBuilder(value);
     };
-    const selectTr = () => {};
+    const selectTr = ({ referCode, date, rate, paid, builder, location }) => {
+        setReferCode(referCode);
+        setDate(date);
+        setRate(rate);
+        setPaid(paid);
+        setBuilder(builder);
+        setLocation(location);
+        setBtn("Update");
+    };
     const init = () => {
         getData();
     };
     useEffect(() => {
-        console.log({ paid });
-
         setDue(rate - paid);
     }, [paid]);
     useEffect(() => {
@@ -197,7 +240,11 @@ const App = () => {
                 </thead>
                 <tbody>
                     {dihari.map((item, i, arr) => (
-                        <tr key={i} onClick={e => selectTr(item)}>
+                        <tr
+                            className="hover"
+                            key={i}
+                            onClick={e => selectTr(item)}
+                        >
                             <td className="px-4 py-2">{i + 1}</td>
                             <td className="px-4 py-2">{item.date}</td>
                             <td className="px-4 py-2">{item.rate}</td>
@@ -211,10 +258,8 @@ const App = () => {
                     ))}
                 </tbody>
             </table>
-            <button className="bg-green-500 text-white px-4 py-2 rounded mt-4 hover:bg-green-600 add ">
-                Add
-            </button>
             <div className="form mt-4">
+                <p className="text-2xl">One day Details</p>
                 <form method="post" onSubmit={handleSubmit}>
                     <div className="flex flex-col space-y-2">
                         <label htmlFor="date" className="text-lg font-semibold">
@@ -308,10 +353,22 @@ const App = () => {
                     </div>
                     <div className="flex flex-col m-2 space-y-2">
                         <button
-                            type="submit"
+                            onClick={insert}
                             className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
                         >
                             Insert
+                        </button>
+                        <button
+                            onClick={update}
+                            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                        >
+                            Update
+                        </button>
+                        <button
+                            onClick={deleteTr}
+                            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                        >
+                            Delete
                         </button>
                     </div>
                 </form>
