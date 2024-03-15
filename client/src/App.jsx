@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const App = () => {
     const [date, setDate] = useState("");
@@ -20,7 +20,7 @@ const App = () => {
     const [Trate, setTrate] = useState(0);
     const [Tpaid, setTpaid] = useState(0);
     const [btn, setBtn] = useState("Insert");
-    const [referCode, setReferCode] = useState("");
+    const [_id, setId] = useState("");
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -45,10 +45,12 @@ const App = () => {
             console.log(err);
         }
     };
-    const update = async () => {
+
+    const update = useCallback(async () => {
         try {
+            console.log({ _id });
             const { data } = await axios.put("/v1/hajri", {
-                referCode,
+                _id,
                 data: { date, rate, due, paid, builder, location }
             });
             console.log({ data });
@@ -58,16 +60,16 @@ const App = () => {
         } catch (err) {
             console.log(err);
         }
-    };
+    }, [_id, rate, paid, due, builder, location]);
     const deleteTr = async () => {
         try {
             const yes = confirm(
                 "Do you want to Really Delete this day record! "
             );
             if (!yes) return;
-            console.log({ referCode });
+            console.log({ _id });
             const { data } = await axios.put("/v1/hajri-del", {
-                referCode
+                _id
             });
             console.log({ data });
             getData();
@@ -155,8 +157,9 @@ const App = () => {
         const value = e.target.value;
         setBuilder(value);
     };
-    const selectTr = ({ referCode, date, rate, paid, builder, location }) => {
-        setReferCode(referCode);
+    const selectTr = ({ _id, date, rate, paid, builder, location }) => {
+        console.log({ _id });
+        setId(_id);
         setDate(date);
         setRate(rate);
         setPaid(paid);
