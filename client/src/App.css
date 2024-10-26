@@ -1,0 +1,11 @@
+.filter {
+  background: pink;
+}
+/* Selects even child elements */
+.cont td:nth-child(even) {
+  background: #1fff9495;
+}
+
+.multi-selected {
+  background: orange;
+}

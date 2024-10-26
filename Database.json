@@ -1,0 +1,40 @@
+{
+    "dihari": [
+        {
+            "date": "2024-03-08",
+            "rate": "550",
+            "due": 550,
+            "paid": "0",
+            "builder": "Const express",
+            "location": "How are ",
+            "referCode": "uzG0xLYevWzTwt6cnble"
+        },
+        {
+            "date": "2024-03-08",
+            "rate": "550",
+            "due": 550,
+            "paid": "0",
+            "builder": "Const express",
+            "location": "How are ",
+            "referCode": "b9XmhdQ34qaJ3HdRaw8q"
+        },
+        {
+            "date": "2024-03-08",
+            "rate": "550",
+            "due": 550,
+            "paid": "0",
+            "builder": "Const express",
+            "location": "How are ",
+            "referCode": "N8xz2O1AT5Z4aJBmHyX1"
+        },
+        {
+            "date": "2024-03-09",
+            "rate": "550",
+            "due": 550,
+            "paid": "0",
+            "builder": "Sunil Tkdr",
+            "location": "Ashram ",
+            "referCode": "sMWNH1KrareUlHgRD2fU"
+        }
+    ]
+}
