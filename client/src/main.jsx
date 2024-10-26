@@ -9,8 +9,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <KindeProvider
     clientId="19aabee2a3d84278ba00a9f01a5e46e3"
     domain="https://rebyb.kinde.com"
-    redirectUri="http://localhost:3006"
-    logoutUri="http://localhost:3006"
+    redirectUri="https://job-attendance.up.railway.app"
+    logoutUri="https://job-attendance.up.railway.app"
   >
     <App />
   </KindeProvider>

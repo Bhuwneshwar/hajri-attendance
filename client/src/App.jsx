@@ -188,10 +188,15 @@ const App = () => {
   }, []);
   return (
     <div id="app" className="p-4">
-      {/* {!isAuthenticated ? ( */}
-      {!true ? (
+      {!isAuthenticated ? (
+        // {!true ? (
         <>
-          <button onClick={login}>Sign In / Sign Up</button>
+          <button
+            className="text-3xl text-center text-yellow-500 font-bold bg-blue-500 p-2 rounded-full"
+            onClick={login}
+          >
+            Sign In / Sign Up
+          </button>
         </>
       ) : (
         <>
