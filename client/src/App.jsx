@@ -187,17 +187,17 @@ const App = () => {
     init();
   }, []);
   return (
-    <div id="app" className="p-4">
-      {!isAuthenticated ? (
-        // {!true ? (
-        <>
+    <div id="app" className="p-4 ">
+      {/* {!isAuthenticated ? ( */}
+      {!true ? (
+        <div className="h-full flex justify-center">
           <button
             className="text-3xl text-center text-yellow-500 font-bold bg-blue-500 p-2 rounded-full"
             onClick={login}
           >
             Sign In / Sign Up
           </button>
-        </>
+        </div>
       ) : (
         <>
           <h1 className="text-3xl text-center text-green-500 font-bold mb-4">

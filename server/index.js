@@ -14,7 +14,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/v1/hajri", async (req, res) => {
-  const dihari = await Hajri.find();
+  const { userid } = req.query;
+
+  const dihari = await Hajri.find({ userId: userid });
   res.send({ dihari });
 });
 
